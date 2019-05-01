@@ -66,6 +66,27 @@ define Device/LinkIt7688
 endef
 TARGET_DEVICES += LinkIt7688
 
+define Device/HLK-7688A
+  DTS := HLK7688A
+  IMAGE_SIZE := $(ralink_default_fw_size_32M)
+  SUPPORTED_DEVICES := hlk7688a
+  DEVICE_TITLE := Hi-Link HLK-7688A
+  DEVICE_PACKAGES:= kmod-usb2 kmod-usb-ohci kmod-usb-ledtrig-usbport \
+                uboot-envtools kmod-ledtrig-netdev mountd \
+                coreutils coreutils-stty \
+                spi-tools \
+                kmod-fs-btrfs kmod-fs-nfs \
+                kmod-fs-vfat kmod-fs-exfat kmod-fs-ext4 block-mount e2fsprogs \
+                kmod-i2c-core kmod-i2c-ralink \
+                kmod-nls-base kmod-nls-cp437 kmod-nls-iso8859-1 kmod-nls-utf8 \
+                kmod-usb-storage kmod-usb-acm kmod-usb-serial \
+                kmod-usb-serial-ch341 kmod-usb-serial-ftdi \
+                kmod-usb-serial-pl2303 kmod-usb-serial-wwan \
+                luci btrfs-progs dosfsck mkdosfs \
+                mtk-wifi
+endef
+TARGET_DEVICES += HLK-7688A
+
 define Device/mac1200r-v2
   DTS := MAC1200RV2
   DEVICE_TITLE := Mercury MAC1200R v2.0
