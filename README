@@ -1,3 +1,8 @@
+
+ Adding support for devices based on HiLink HLK-7688A module.
+ Based on way https://github.com/elecboy/lede_hlk7688
+
+ -----------------------------------------------------
   _______                     ________        __
  |       |.-----.-----.-----.|  |  |  |.----.|  |_
  |   -   ||  _  |  -__|     ||  |  |  ||   _||   _|
