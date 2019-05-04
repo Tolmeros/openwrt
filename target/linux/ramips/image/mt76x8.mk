@@ -82,8 +82,7 @@ define Device/HLK-7688A
                 kmod-usb-storage kmod-usb-acm kmod-usb-serial \
                 kmod-usb-serial-ch341 kmod-usb-serial-ftdi \
                 kmod-usb-serial-pl2303 kmod-usb-serial-wwan \
-                luci btrfs-progs dosfsck mkdosfs \
-                mtk-wifi
+                luci btrfs-progs dosfsck mkdosfs
 endef
 TARGET_DEVICES += HLK-7688A
 
