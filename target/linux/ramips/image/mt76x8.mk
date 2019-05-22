@@ -75,6 +75,7 @@ define Device/HLK7688A
   DEVICE_TITLE := Hi-Link HLK-7688A
   DEVICE_DESCRIPTION := Hi-Link HLK-7688A IoT device or router module
   DEVICE_PACKAGES:= kmod-usb2 kmod-usb-ohci kmod-usb-ledtrig-usbport \
+                kmod-input-polldev kmod-leds-gpio \
                 uboot-envtools kmod-ledtrig-netdev mountd \
                 coreutils coreutils-stty \
                 spi-tools \
@@ -99,6 +100,7 @@ define Device/HLK7688A_r_wllll_u0_57600
   Serial console on uart0(uartlite) speed 57600 \
   MDI 0: WAN, MDI 1..4: LAN
   DEVICE_PACKAGES:= kmod-usb2 kmod-usb-ohci kmod-usb-ledtrig-usbport \
+                kmod-input-polldev kmod-leds-gpio \
                 uboot-envtools kmod-ledtrig-netdev mountd \
                 coreutils coreutils-stty \
                 spi-tools \
