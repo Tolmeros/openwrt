@@ -7,7 +7,11 @@
 
 / {
 	compatible = "hlk7688a", "mediatek,hlk7688a", "mediatek,mt7628an-soc";
-	model = "Hi-Link HLK-7688A";
+	/*
+	model must ends to "HLK-7688A"
+	because to case in `lib/ramips.sh`
+	*/
+	model = "(Router WLLL u1 57600) Hi-Link HLK-7688A";
 
 	chosen {
 		bootargs = "console=ttyS1,57600";
@@ -34,7 +38,7 @@
 		compatible = "gpio-leds";
 
 		wifi {
-			label = "mediatek:orange:wifi";
+			label = "hlk7688a:green:status";
 			gpios = <&wgpio 0 0>;
 			default-state = "on";
 		};

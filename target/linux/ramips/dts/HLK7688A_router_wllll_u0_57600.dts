@@ -7,7 +7,11 @@
 
 / {
 	compatible = "hlk7688a", "mediatek,hlk7688a", "mediatek,mt7628an-soc";
-	model = "Hi-Link HLK-7688A";
+	/* 
+	model must ends to "HLK-7688A"
+	because to case in `lib/ramips.sh`
+	*/
+	model = "(Router WLLL u0 57600) Hi-Link HLK-7688A";
 
 	chosen {
 		bootargs = "console=ttyS0,57600";
@@ -34,7 +38,7 @@
 		compatible = "gpio-leds";
 
 		wifi {
-			label = "mediatek:orange:wifi";
+			label = "hlk7688a:green:status";
 			gpios = <&wgpio 0 0>;
 			default-state = "on";
 		};
@@ -218,8 +222,13 @@
 	mediatek,portdisable = <0x3c>;
 	*/
 
-	// 0x3f = 0b00101111 for test
+	// 0x3f = 0b00111111 for test
 	mediatek,portmap = <0x2f>;
+
+	// ZBGW
+	// it has 0,1,2 ports to LAN
+	// sd cart connected to sdio on eth 3,4 pins
+	//mediatek,portdisable = <0x38>;
 };
 
 &sdhci {
