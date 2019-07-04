@@ -236,6 +236,9 @@ hg255d)
 	set_usb_led "$boardname:green:usb"
 	ucidef_set_led_netdev "internet" "internet" "$boardname:green:internet" "eth0.2"
 	;;
+hlk7688a)
+	set_wifi_led "hlk7688a:green:status"
+	;;
 hpm)
 	ucidef_set_led_default "power" "POWER" "$boardname:orange:power" "1"
 	ucidef_set_led_netdev "eth" "ETH" "$boardname:green:eth" "eth0"

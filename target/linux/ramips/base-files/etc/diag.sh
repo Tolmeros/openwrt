@@ -343,6 +343,9 @@ get_status_led() {
 	zbt-wg3526-32M)
 		status_led="zbt-wg3526:green:status"
 		;;
+	hlk7688a)
+		status_led="hlk7688a:green:status"
+		;;
 	esac
 }
 

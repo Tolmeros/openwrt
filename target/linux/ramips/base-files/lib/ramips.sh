@@ -235,6 +235,9 @@ ramips_board_detect() {
 	*"HG255D")
 		name="hg255d"
 		;;
+	*"HLK-7888A")
+		name="hlk7688a"
+		;;
 	*"HLK-RM04")
 		name="hlk-rm04"
 		;;

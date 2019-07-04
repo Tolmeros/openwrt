@@ -72,6 +72,7 @@ platform_check_image() {
 	hc5*61|\
 	hc5661a|\
 	hg255d|\
+	hlk7688a|\
 	hlk-rm04|\
 	hpm|\
 	ht-tm02|\
