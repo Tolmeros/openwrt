@@ -102,6 +102,16 @@ define Device/tplink_tl-wr740n-v4
 endef
 TARGET_DEVICES += tplink_tl-wr740n-v4
 
+define Device/tplink_tl-wr740n-v4_unsafe
+  $(Device/tplink-4mlzma)
+  ATH_SOC := ar9331
+  DEVICE_MODEL := TL-WR740N_unsafe
+  DEVICE_VARIANT := v4
+  TPLINK_HWID := 0x07400004
+  SUPPORTED_DEVICES += tl-wr740n-v4
+endef
+TARGET_DEVICES += tplink_tl-wr740n-v4_unsafe
+
 define Device/tplink_tl-wr741-v1
   $(Device/tplink-4m)
   ATH_SOC := ar7240
@@ -118,6 +128,16 @@ define Device/tplink_tl-wr741nd-v4
   DEVICE_VARIANT := v4
   TPLINK_HWID := 0x07410004
   SUPPORTED_DEVICES += tl-wr741n-v4
+endef
+TARGET_DEVICES += tplink_tl-wr741nd-v4
+
+define Device/tplink_tl-wr741nd-v4_unsafe
+  $(Device/tplink-4mlzma)
+  ATH_SOC := ar9331
+  DEVICE_MODEL := TL-WR741N/ND_unsafe
+  DEVICE_VARIANT := v4
+  TPLINK_HWID := 0x07410004
+  SUPPORTED_DEVICES += tl-wr741n-v4_unsafe
 endef
 TARGET_DEVICES += tplink_tl-wr741nd-v4
 
