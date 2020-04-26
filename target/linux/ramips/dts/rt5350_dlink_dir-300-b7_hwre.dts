@@ -1,0 +1,202 @@
+/dts-v1/;
+
+#include "rt5350_dlink_dir-300-b7.dtsi"
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
+
+/ {
+	compatible = "dlink,dir-300-b7", "ralink,rt5350-soc";
+	model = "(Hardware reverse engineering) D-Link DIR-300 B7";
+
+	aliases {
+		led-boot = &led_status;
+		led-failsafe = &led_status;
+		led-running = &led_status;
+		led-upgrade = &led_status;
+	};
+
+	leds {
+		compatible = "gpio-leds";
+
+		led_status: status {
+			label = "dir-300-b7:green:status";
+			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
+		};
+
+		wan {
+			// GPIO26
+			// LAN4
+			label = "dir-300-b7:green:wan";
+			gpios = <&gpio1 4 GPIO_ACTIVE_HIGH>;
+		};
+
+		lan1 {
+			// GPIO25
+			// LAN3
+			label = "dir-300-b7:green:lan1";
+			gpios = <&gpio1 3 GPIO_ACTIVE_LOW>;
+		};
+
+		lan2 {
+			// GPIO24
+			// LAN2
+			label = "dir-300-b7:green:lan2";
+			gpios = <&gpio1 2 GPIO_ACTIVE_HIGH>;
+		};
+
+		lan3 {
+			// GPIO23
+			// LAN1
+			label = "dir-300-b7:green:lan3";
+			gpios = <&gpio1 1 GPIO_ACTIVE_HIGH>;
+		};
+
+		lan4 {
+			// GPIO22
+			// LAN0
+			label = "dir-300-b7:green:lan4";
+			gpios = <&gpio1 0 GPIO_ACTIVE_HIGH>;
+		};
+
+	};
+
+	keys {
+		compatible = "gpio-keys-polled";
+		poll-interval = <20>;
+
+		reset {
+			label = "reset";
+			gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
+			linux,code = <KEY_RESTART>;
+		};
+
+		wps {
+			label = "wps";
+			gpios = <&gpio0 0 GPIO_ACTIVE_LOW>;
+			linux,code = <KEY_WPS_BUTTON>;
+		};
+	};
+
+	gpio-export {
+		compatible = "gpio-export";
+		#size-cells = <0>;
+
+		/*
+		gpio0 {
+			gpio-export,name = "gpio0";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio0 0 GPIO_ACTIVE_HIGH>;
+		};
+
+		gpio1 {
+			gpio-export,name = "gpio1";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio1 0 GPIO_ACTIVE_HIGH>;
+		};
+		*/
+
+		/* GPIOs 1-6 are I2C,SPI */
+		/* GPIO 7-14 are uart1 */
+		/* GPIOs 15 & 16 are uart2 */
+		/* JTAG */
+
+		gpio13 {
+			// WPS LED?
+			gpio-export,name = "gpio13";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
+		};
+
+		gpio17 {
+			// JTAG_TDO
+			gpio-export,name = "gpio17";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio0 17 GPIO_ACTIVE_HIGH>;
+		};
+
+		gpio18 {
+			// JTAG_TDI
+			gpio-export,name = "gpio18";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio0 18 GPIO_ACTIVE_HIGH>;
+		};
+
+		gpio19 {
+			// JTAG_TMS
+			gpio-export,name = "gpio19";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio0 19 GPIO_ACTIVE_HIGH>;
+		};
+
+		gpio20 {
+			// JTAG_TCLK
+			gpio-export,name = "gpio20";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio0 20 GPIO_ACTIVE_HIGH>;
+		};
+
+		gpio21 {
+			//
+			gpio-export,name = "gpio21";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio0 21 GPIO_ACTIVE_HIGH>;
+		};
+
+		/* ETH LEDs */
+		/*
+		gpio22 {
+			gpio-export,name = "gpio22";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio1 0 GPIO_ACTIVE_HIGH>;
+		};
+
+		gpio23 {
+			gpio-export,name = "gpio23";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio1 1 GPIO_ACTIVE_HIGH>;
+		};
+
+		gpio24 {
+			gpio-export,name = "gpio24";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio1 2 GPIO_ACTIVE_HIGH>;
+		};
+
+		gpio25 {
+			gpio-export,name = "gpio25";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio1 3 GPIO_ACTIVE_HIGH>;
+		};
+
+		
+		gpio26 {
+			gpio-export,name = "gpio26";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio1 4 GPIO_ACTIVE_HIGH>;
+		};
+		*/
+
+		/*
+		gpio27 {
+			//
+			gpio-export,name = "gpio27";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio1 5 GPIO_ACTIVE_HIGH>;
+		};
+		*/
+	};
+};
+
+&gpio1 {
+	status = "okay";
+};
+
+&pinctrl {
+	state_default: pinctrl0 {
+		gpio {
+			ralink,group = "i2c", "jtag", "led", "spi_cs1", "uartf";
+			ralink,function = "gpio";
+		};
+	};
+};
