@@ -1,0 +1,93 @@
+/dts-v1/;
+
+#include "rt5350_dlink_dir-300-b7.dtsi"
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
+
+/ {
+	compatible = "dlink,dir-300-b7", "ralink,rt5350-soc";
+	model = "(Hardware reverse engineering) D-Link DIR-300 B7";
+
+	aliases {
+		led-boot = &led_status;
+		led-failsafe = &led_status;
+		led-running = &led_status;
+		led-upgrade = &led_status;
+	};
+
+	leds {
+		compatible = "gpio-leds";
+
+		led_status: status {
+			label = "dir-300-b7:green:status";
+			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
+		};
+
+		wan {
+			// GPIO26
+			// LAN4
+			label = "dir-300-b7:green:wan";
+			gpios = <&gpio1 4 GPIO_ACTIVE_HIGH>;
+		};
+
+		lan1 {
+			// GPIO25
+			// LAN3
+			label = "dir-300-b7:green:lan1";
+			gpios = <&gpio1 3 GPIO_ACTIVE_LOW>;
+		};
+
+		lan2 {
+			// GPIO24
+			// LAN2
+			label = "dir-300-b7:green:lan2";
+			gpios = <&gpio1 2 GPIO_ACTIVE_HIGH>;
+		};
+
+		lan3 {
+			// GPIO23
+			// LAN1
+			label = "dir-300-b7:green:lan3";
+			gpios = <&gpio1 1 GPIO_ACTIVE_HIGH>;
+		};
+
+		lan4 {
+			// GPIO22
+			// LAN0
+			label = "dir-300-b7:green:lan4";
+			gpios = <&gpio1 0 GPIO_ACTIVE_HIGH>;
+		};
+
+	};
+
+	keys {
+		compatible = "gpio-keys-polled";
+		poll-interval = <20>;
+
+		reset {
+			label = "reset";
+			gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
+			linux,code = <KEY_RESTART>;
+		};
+
+		wps {
+			label = "wps";
+			gpios = <&gpio0 0 GPIO_ACTIVE_LOW>;
+			linux,code = <KEY_WPS_BUTTON>;
+		};
+	};
+};
+
+&gpio1 {
+	status = "okay";
+};
+
+&pinctrl {
+	state_default: pinctrl0 {
+		gpio {
+			ralink,group = "i2c", "jtag", "led", "spi_cs1", "uartf";
+			ralink,function = "gpio";
+		};
+	};
+};

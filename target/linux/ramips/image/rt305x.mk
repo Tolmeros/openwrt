@@ -233,6 +233,16 @@ define Device/dir-320-b1
 endef
 TARGET_DEVICES += dir-320-b1
 
+define Device/dir-300-b7-hwre
+  DTS := rt5350_dlink_dir-300-b7-hwre
+  BLOCKSIZE := 4k
+  IMAGE_SIZE := $(ralink_default_fw_size_4M)
+  DEVICE_TITLE := D-Link DIR-300 B7 (Hardware reverse engineering)
+  DEFAULT := n
+  SUPPORTED_DEVICES += dir-300-b7
+endef
+TARGET_DEVICES += dir-300-b7-hwre
+
 define Device/dir-600-b1
   DTS := DIR-600-B1
   IMAGE_SIZE := $(ralink_default_fw_size_4M)
