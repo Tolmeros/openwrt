@@ -88,18 +88,51 @@
 			gpio-export,direction_may_change = <1>;
 			gpios = <&gpio0 0 GPIO_ACTIVE_HIGH>;
 		};
+		*/
+
+		/* GPIOs 1-2 are I2C */
+		/* GPIOs 3-6 are SPI */
+		/* GPIO 7-14 are uart1 */
+		/* GPIOs 15 & 16 are uart2 */
 
 		gpio1 {
 			gpio-export,name = "gpio1";
 			gpio-export,direction_may_change = <1>;
-			gpios = <&gpio1 0 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio0 1 GPIO_ACTIVE_HIGH>;
 		};
-		*/
 
-		/* GPIOs 1-6 are I2C,SPI */
-		/* GPIO 7-14 are uart1 */
-		/* GPIOs 15 & 16 are uart2 */
-		/* JTAG */
+		gpio2 {
+			gpio-export,name = "gpio2";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
+		};
+
+		gpio7 {
+			gpio-export,name = "gpio7";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio0 7 GPIO_ACTIVE_HIGH>;
+		};
+
+		gpio8 {
+			gpio-export,name = "gpio8";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;
+		};
+
+
+		// 9 led 10 btn
+
+		gpio11 {
+			gpio-export,name = "gpio11";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio0 11 GPIO_ACTIVE_HIGH>;
+		};
+
+		gpio12 {
+			gpio-export,name = "gpio12";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio0 12 GPIO_ACTIVE_HIGH>;
+		};
 
 		gpio13 {
 			// WPS LED?
@@ -107,6 +140,14 @@
 			gpio-export,direction_may_change = <1>;
 			gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
 		};
+
+		gpio14 {
+			gpio-export,name = "gpio14";
+			gpio-export,direction_may_change = <1>;
+			gpios = <&gpio0 14 GPIO_ACTIVE_HIGH>;
+		};
+
+		/* JTAG */
 
 		gpio17 {
 			// JTAG_TDO
@@ -177,14 +218,12 @@
 		};
 		*/
 
-		/*
 		gpio27 {
-			//
+			// spi_cs1
 			gpio-export,name = "gpio27";
 			gpio-export,direction_may_change = <1>;
 			gpios = <&gpio1 5 GPIO_ACTIVE_HIGH>;
 		};
-		*/
 	};
 };
 
@@ -195,8 +234,21 @@
 &pinctrl {
 	state_default: pinctrl0 {
 		gpio {
-			ralink,group = "i2c", "jtag", "led", "spi_cs1", "uartf";
+			ralink,group = "i2c", "jtag", "spi_cs1", "uartf";
 			ralink,function = "gpio";
 		};
+
+		phy_led {
+			ralink,group =  "led";
+			ralink,function = "led";
+		};
 	};
+};
+
+&ehci {
+	status = "okay";
+};
+
+&ohci {
+	status = "okay";
 };
