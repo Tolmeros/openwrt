@@ -71,24 +71,24 @@
 			linux,code = <KEY_RESTART>;
 		};
 
+		/*
 		wps {
 			label = "wps";
 			gpios = <&gpio0 0 GPIO_ACTIVE_LOW>;
 			linux,code = <KEY_WPS_BUTTON>;
 		};
+		*/
 	};
 
 	gpio-export {
 		compatible = "gpio-export";
 		#size-cells = <0>;
 
-		/*
 		gpio0 {
 			gpio-export,name = "gpio0";
 			gpio-export,direction_may_change = <1>;
 			gpios = <&gpio0 0 GPIO_ACTIVE_HIGH>;
 		};
-		*/
 
 		/* GPIOs 1-2 are I2C */
 		/* GPIOs 3-6 are SPI */
@@ -146,6 +146,8 @@
 			gpio-export,direction_may_change = <1>;
 			gpios = <&gpio0 14 GPIO_ACTIVE_HIGH>;
 		};
+
+		/* 15 16 uart lite */
 
 		/* JTAG */
 
@@ -234,14 +236,16 @@
 &pinctrl {
 	state_default: pinctrl0 {
 		gpio {
-			ralink,group = "i2c", "jtag", "spi_cs1", "uartf";
+			ralink,group = "i2c", "jtag", "spi_cs1", "uartf", "led";
 			ralink,function = "gpio";
 		};
 
+		/*
 		phy_led {
 			ralink,group =  "led";
 			ralink,function = "led";
 		};
+		*/
 	};
 };
 
