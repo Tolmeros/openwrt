@@ -140,7 +140,14 @@ dir-620-a1)
 	ucidef_set_led_default "wan" "WAN LED (amber)" "$boardname:amber:wan" "1"
 	set_wifi_led "rt2800pci-phy0::radio"
 	;;
-dir-300-b7|\
+dir-300-b7)
+	ucidef_set_led_switch "wan" "wan" "$boardname:green:wan" "switch0" "0x10"
+	ucidef_set_led_switch "lan1" "lan1" "$boardname:green:lan1" "switch0" "0x08"
+	ucidef_set_led_switch "lan2" "lan2" "$boardname:green:lan2" "switch0" "0x04"
+	ucidef_set_led_switch "lan3" "lan3" "$boardname:green:lan3" "switch0" "0x02"
+	ucidef_set_led_switch "lan4" "lan4" "$boardname:green:lan4" "switch0" "0x01"
+	set_wifi_led "rt2800pci-phy0::radio"
+	;;
 dir-320-b1|\
 dir-610-a1|\
 esr-9753|\
