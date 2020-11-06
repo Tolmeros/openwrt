@@ -1,0 +1,70 @@
+/dts-v1/;
+
+#include "HLK7688A_router_wlll.dtsi"
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
+
+/ {
+	compatible = "hlk7688a", "mediatek,hlk7688a", "mediatek,mt7628an-soc";
+	/* 
+	model must ends to "HLK-7688A"
+	because to case in `lib/ramips.sh`
+	*/
+	model = "(Router WLLL u0 115200) Hi-Link HLK-7688A";
+
+	chosen {
+		bootargs = "console=ttyS0,115200";
+	};
+
+	aliases {
+		// There is no uart0, there is uartlite
+		serial0 = &uartlite; 
+	};
+
+	memory@0 {
+		device_type = "memory";
+		reg = <0x0 0x8000000>;
+	};
+
+	bootstrap {
+		// От чего это зависит?
+		compatible = "mediatek,linkit";
+
+		status = "okay";
+	};
+
+	gpio-leds {
+		compatible = "gpio-leds";
+
+		wifi {
+			label = "hlk7688a:green:status";
+			gpios = <&wgpio 0 0>;
+			default-state = "on";
+		};
+	};
+
+	gpio-keys-polled {
+		compatible = "gpio-keys-polled";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		poll-interval = <20>;
+
+		wps {
+			// Где эта кнопка?
+			label = "reset";
+			gpios = <&gpio1 6 1>;
+			linux,code = <KEY_WPS_BUTTON>;
+		};
+	};
+
+	wgpio: gpio-wifi {
+		compatible = "mediatek,gpio-wifi";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		gpio-controller;
+		#gpio-cells = <2>;
+	};
+	
+};
+

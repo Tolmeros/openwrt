@@ -27,6 +27,9 @@ wnce2001|\
 zbt-we2026)
 	set_wifi_led "$boardname:green:wlan"
 	;;
+hlk7688a)
+	set_wifi_led "$boardname:green:wlan"
+	;;
 ai-br100)
 	ucidef_set_led_netdev "wan" "wan" "$boardname:blue:wan" "eth0.2"
 	set_wifi_led "$boardname:blue:wlan"

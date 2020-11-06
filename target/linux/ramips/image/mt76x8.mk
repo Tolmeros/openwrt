@@ -102,6 +102,143 @@ define Device/LinkIt7688
 endef
 TARGET_DEVICES += LinkIt7688
 
+# -=-=- hlk7688a -=-=-
+
+define Device/HLK7688A_router_dev_defaults
+  SUPPORTED_DEVICES := hlk7688a hlk7688a_r_wllll
+  DEVICE_PACKAGES:= kmod-usb2 kmod-usb-ohci kmod-usb-ledtrig-usbport \
+                kmod-input-polldev kmod-leds-gpio \
+                uboot-envtools kmod-ledtrig-netdev mountd \
+                coreutils coreutils-stty \
+                spi-tools \
+                kmod-fs-btrfs kmod-fs-nfs \
+                kmod-fs-vfat kmod-fs-exfat kmod-fs-ext4 block-mount e2fsprogs \
+                kmod-i2c-core kmod-i2c-ralink \
+                kmod-nls-base kmod-nls-cp437 kmod-nls-iso8859-1 kmod-nls-utf8 \
+                kmod-usb-storage kmod-usb-acm kmod-usb-serial \
+                kmod-usb-serial-ch341 kmod-usb-serial-ftdi \
+                kmod-usb-serial-pl2303 kmod-usb-serial-wwan \
+                luci btrfs-progs dosfsck mkdosfs
+endef
+
+define Device/HLK7688A
+  DTS := HLK7688A
+  IMAGE_SIZE := $(ralink_default_fw_size_32M)
+  SUPPORTED_DEVICES := hlk7688a
+  DEVICE_TITLE := Hi-Link HLK-7688A
+  DEVICE_DESCRIPTION := Hi-Link HLK-7688A IoT device or router module
+  DEVICE_PACKAGES:= kmod-usb2 kmod-usb-ohci kmod-usb-ledtrig-usbport \
+                kmod-input-polldev kmod-leds-gpio \
+                uboot-envtools kmod-ledtrig-netdev mountd \
+                coreutils coreutils-stty \
+                spi-tools \
+                kmod-fs-btrfs kmod-fs-nfs \
+                kmod-fs-vfat kmod-fs-exfat kmod-fs-ext4 block-mount e2fsprogs \
+                kmod-i2c-core kmod-i2c-ralink \
+                kmod-sdhci-mt7620 \
+                kmod-nls-base kmod-nls-cp437 kmod-nls-iso8859-1 kmod-nls-utf8 \
+                kmod-usb-storage kmod-usb-acm kmod-usb-serial \
+                kmod-usb-serial-ch341 kmod-usb-serial-ftdi \
+                kmod-usb-serial-pl2303 kmod-usb-serial-wwan \
+                luci btrfs-progs dosfsck mkdosfs
+endef
+TARGET_DEVICES += HLK7688A
+
+define Device/HLK7688A_r_wllll_u0_57600
+  DTS := HLK7688A_router_wllll_u0_57600
+  IMAGE_SIZE := $(ralink_default_fw_size_32M)
+  SUPPORTED_DEVICES := hlk7688a hlk7688a_r_wllll hlk7688a_r_wllll_u0_57600
+  DEVICE_TITLE := HLK-7688A Router mode WLLLL Console uart0 57600
+  DEVICE_DESCRIPTION := Router based on Hi-Link HLK-7688A \
+  Serial console on uart0(uartlite) speed 57600 \
+  MDI 0: WAN, MDI 1..4: LAN
+  DEVICE_PACKAGES:= kmod-usb2 kmod-usb-ohci kmod-usb-ledtrig-usbport \
+                kmod-input-polldev kmod-leds-gpio \
+                uboot-envtools kmod-ledtrig-netdev mountd \
+                coreutils coreutils-stty \
+                spi-tools \
+                kmod-fs-btrfs kmod-fs-nfs \
+                kmod-fs-vfat kmod-fs-exfat kmod-fs-ext4 block-mount e2fsprogs \
+                kmod-i2c-core kmod-i2c-ralink \
+                kmod-nls-base kmod-nls-cp437 kmod-nls-iso8859-1 kmod-nls-utf8 \
+                kmod-usb-storage kmod-usb-acm kmod-usb-serial \
+                kmod-usb-serial-ch341 kmod-usb-serial-ftdi \
+                kmod-usb-serial-pl2303 kmod-usb-serial-wwan \
+                luci btrfs-progs dosfsck mkdosfs
+endef
+TARGET_DEVICES += HLK7688A_r_wllll_u0_57600
+
+define Device/HLK7688A_r_wllll_u1_57600
+  DTS := HLK7688A_router_wllll_u1_57600
+  IMAGE_SIZE := $(ralink_default_fw_size_32M)
+  SUPPORTED_DEVICES := hlk7688a hlk7688a_r_wllll hlk7688a_r_wllll_u1_57600
+  DEVICE_TITLE := HLK-7688A Router mode WLLLL Console uart1 57600
+  DEVICE_DESCRIPTION := Router based on Hi-Link HLK-7688A \
+  Serial console on uart1(uartlite) speed 57600 \
+  MDI 0: WAN, MDI 1..4: LAN
+  DEVICE_PACKAGES:= kmod-usb2 kmod-usb-ohci kmod-usb-ledtrig-usbport \
+                uboot-envtools kmod-ledtrig-netdev mountd \
+                coreutils coreutils-stty \
+                spi-tools \
+                kmod-fs-btrfs kmod-fs-nfs \
+                kmod-fs-vfat kmod-fs-exfat kmod-fs-ext4 block-mount e2fsprogs \
+                kmod-i2c-core kmod-i2c-ralink \
+                kmod-nls-base kmod-nls-cp437 kmod-nls-iso8859-1 kmod-nls-utf8 \
+                kmod-usb-storage kmod-usb-acm kmod-usb-serial \
+                kmod-usb-serial-ch341 kmod-usb-serial-ftdi \
+                kmod-usb-serial-pl2303 kmod-usb-serial-wwan \
+                luci btrfs-progs dosfsck mkdosfs
+endef
+TARGET_DEVICES += HLK7688A_r_wllll_u1_57600
+
+define Device/HLK7688A_r_wllll_u0_115200
+  $(Device/HLK7688A_router_dev_defaults)
+  DTS := HLK7688A_router_wllll_u0_115200
+  IMAGE_SIZE := $(ralink_default_fw_size_32M)
+  DEVICE_TITLE := HLK-7688A Router mode WLLLL Console uart0 115200
+  DEVICE_DESCRIPTION := Router based on Hi-Link HLK-7688A \
+  Serial console on uart0(uartlite) speed 115200 \
+  MDI 0: WAN, MDI 1..4: LAN
+  DEVICE_PACKAGES:= kmod-usb2 kmod-usb-ohci kmod-usb-ledtrig-usbport \
+                uboot-envtools kmod-ledtrig-netdev mountd \
+                coreutils coreutils-stty \
+                spi-tools \
+                kmod-fs-btrfs kmod-fs-nfs \
+                kmod-fs-vfat kmod-fs-exfat kmod-fs-ext4 block-mount e2fsprogs \
+                kmod-i2c-core kmod-i2c-ralink \
+                kmod-nls-base kmod-nls-cp437 kmod-nls-iso8859-1 kmod-nls-utf8 \
+                kmod-usb-storage kmod-usb-acm kmod-usb-serial \
+                kmod-usb-serial-ch341 kmod-usb-serial-ftdi \
+                kmod-usb-serial-pl2303 kmod-usb-serial-wwan \
+                luci btrfs-progs dosfsck mkdosfs
+endef
+TARGET_DEVICES += HLK7688A_r_wllll_u0_115200
+
+define Device/HLK7688A_r_wllll_u1_115200
+  DTS := HLK7688A_router_wllll_u1_115200
+  IMAGE_SIZE := $(ralink_default_fw_size_32M)
+  SUPPORTED_DEVICES := hlk7688a hlk7688a_r_wllll hlk7688a_r_wllll_u1_115200
+  DEVICE_TITLE := HLK-7688A Router mode WLLLL Console uart1 115200
+  DEVICE_DESCRIPTION := Router based on Hi-Link HLK-7688A \
+  Serial console on uart1(uartlite) speed 115200 \
+  MDI 0: WAN, MDI 1..4: LAN
+  DEVICE_PACKAGES:= kmod-usb2 kmod-usb-ohci kmod-usb-ledtrig-usbport \
+                uboot-envtools kmod-ledtrig-netdev mountd \
+                coreutils coreutils-stty \
+                spi-tools \
+                kmod-fs-btrfs kmod-fs-nfs \
+                kmod-fs-vfat kmod-fs-exfat kmod-fs-ext4 block-mount e2fsprogs \
+                kmod-i2c-core kmod-i2c-ralink \
+                kmod-nls-base kmod-nls-cp437 kmod-nls-iso8859-1 kmod-nls-utf8 \
+                kmod-usb-storage kmod-usb-acm kmod-usb-serial \
+                kmod-usb-serial-ch341 kmod-usb-serial-ftdi \
+                kmod-usb-serial-pl2303 kmod-usb-serial-wwan \
+                luci btrfs-progs dosfsck mkdosfs
+endef
+TARGET_DEVICES += HLK7688A_r_wllll_u1_115200
+
+# -=-=- hlk7688a end -=-=-
+
 define Device/mac1200r-v2
   DTS := MAC1200RV2
   DEVICE_TITLE := Mercury MAC1200R v2.0
